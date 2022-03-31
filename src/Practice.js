@@ -296,7 +296,7 @@
 
 // 
 /////////////////////////////////////////////
-//연습문제 1
+//연습문제 1 해답 1
 
 // import React from "react";
 
@@ -319,24 +319,55 @@
 ///////////////////////////////////////
 //app 컴포넌트
 
-import React from "react";
-import Friend from './Friend'
+// import React from "react";
+// import Friend from './Friend'
 
-function App() {
-    return (
-        <div className="App">
-            <Friend name="Victoria" age="13" city="seoul"/>
-            <Friend name="sun" age="34" city="busan"/>
-            <Friend name="johseb" age="25" city="busan"/>
-            <Friend name="syleemomo" age="9" city="seoul"/>
-            <Friend name="hannah" age="41" city="daegu"/>
-            <Friend name="shara" age="37" city="seoul"/>
-            <Friend name="martin" age="28" city="daegu"/>
-            <Friend name="gorgia" age="39" city="seoul"/>
-            <Friend name="nana" age="24" city="busan"/>
-            <Friend name="dannel" age="19" city="seoul"/>
-        </div>
-    );
+// function App() {
+//     return (
+//         <div className="App">
+//             <Friend name="Victoria" age="13" city="seoul"/>
+//             <Friend name="sun" age="34" city="busan"/>
+//             <Friend name="johseb" age="25" city="busan"/>
+//             <Friend name="syleemomo" age="9" city="seoul"/>
+//             <Friend name="hannah" age="41" city="daegu"/>
+//             <Friend name="shara" age="37" city="seoul"/>
+//             <Friend name="martin" age="28" city="daegu"/>
+//             <Friend name="gorgia" age="39" city="seoul"/>
+//             <Friend name="nana" age="24" city="busan"/>
+//             <Friend name="dannel" age="19" city="seoul"/>
+//         </div>
+//     );
+// }
+
+// export default App;
+/////////////////////////////////////////////////////////////////
+//연습문제1  해답 2 (App에서 바로 작성)
+
+import React, { Component } from "react";
+import Friend from './Friend';
+
+const friends =[
+    {name: 'victioria', age: 13, city: 'seoul'},
+    {name: 'sun', age: 34, city: 'busan'},
+    {name: 'johseb', age: 25, city: 'busan'},
+    {name: 'syleemomo', age: 9, city: 'seoul'},
+    {name: 'hannah', age: 41, city: 'daegu'},
+    {name: 'shara', age: 37, city: 'seoul'},
+    {name: 'martin', age: 28, city: 'daegu'},
+    {name: 'gorgia', age: 39, city: 'seoul'},
+    {name: 'nana', age: 24, city: 'busan'},
+    {name: 'dannel', age: 19, city: 'seoul'},
+]
+
+export default class App extends Component {
+    render() {
+        return (
+            <>
+            {friends.map((friend, id) => {
+                return <Friend key={id} name={friend.name} age={friend.age} city={friend.city}/>
+            })}
+            </>
+        )
+    }
 }
 
-export default App;
