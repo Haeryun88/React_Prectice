@@ -10,7 +10,8 @@
 body{
   margin: 0;
   padding: 0;
-  background: black;
+  /* background: black; */
+  background: rgb(255, 255, 255);
 }
 .sign{
   width: 100px;
@@ -60,4 +61,31 @@ body{
   to {
     transform: rotate(360deg);
   }
+}
+
+
+.color-box{
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 100px;
+  font-weight: bold;
+  color: white;
+}
+.red{
+  background: red;
+}
+.blue{
+  background: blue;
+}
+.green{
+  background: green;
+}
+.orange{
+  background: orange;
+}
+.skyblue{
+  background: skyblue;
 }

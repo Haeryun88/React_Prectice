@@ -1173,18 +1173,309 @@
 // }
 // export default App;
 // //////
-import React from 'react';
+// import React from 'react';
 
-const App = () => {
-  return (
-    <div>
-      <form>
-          <input type="email" pattern='^[a-zA-Z0-9]+@{1}[a-z]+(\.[a-z]{2,3})$' required></input>
-          <button type='submit'>제출</button>
-      </form>
-      {/* 속성을 쓰려면 항상 form 으로 묶어줘야한다. */}
-    </div>
-  );
-};
+// const App = () => {
+//   return (
+//     <div>
+//       <form>
+//           <input type="email" pattern='^[a-zA-Z0-9]+@{1}[a-z]+(\.[a-z]{2,3})$' required></input>
+//           <button type='submit'>제출</button>
+//       </form>
+//       {/* 속성을 쓰려면 항상 form 으로 묶어줘야한다. */}
+//     </div>
+//   );
+// };
+
+// export default App;
+
+///////////
+//5/2
+
+
+// import React, { Component } from 'react';
+
+// class App extends Component {
+//   state = {
+//     msg : "" 
+//   }
+//   //서버에 접속해서 데이터 가져오기
+//   componentDidMount(){//라이브사이클
+//     fetch("http://localhost:5000/hello")//
+//     .then(res=>res.json())
+//     // .then(res=>res.text())
+//     .then(data=>this.setState({msg: data}))
+//   }
+//   render() {
+//     const{msg} = this.state 
+//     return (
+//       <div>
+//         {msg}
+//       </div>
+//     );
+//   }
+// }
+
+// export default App;
+
+/////
+//0509
+
+
+// import React, { Component } from 'react';
+
+// class App extends Component {
+//   constructor(props){6
+//     console.log('constructor')
+//     super(props)
+//     this.state={
+//       name : "HR"
+//     }
+//   }
+
+//   //라이프 사이클 메서드
+//   componentDidMount(){
+//     console.log('conponentDidMount')
+//   }
+
+//   //이벤트 핸들러 함수
+//   changeName=() => {
+//     this.setState({name : 'name changed'})
+//   }
+
+//   //라이프 사이클 메서드
+//   componentDidUpdate(){
+//     console.log('update')
+//   }
+//   componentWillUnmount(){
+//     console.log('unmount')
+//   }
+  
+//   render(){
+//     console.log('render')
+//     const {name} = this.state
+//     return (
+//       <div className="App">
+//         <h1>{name}</h1>
+//         <button onClick={this.changeName}>Change name</button>
+//       </div>
+//     )
+//   }
+// }
+
+// export default App;
+///////////////////////////////////////////////////
+// import './App.css';
+// import React, { Component } from 'react'
+
+// class App extends Component{
+//   state = {
+//     friends: null
+//   }
+//   setFriends = () => {
+//     this.setState({ friends: [
+//       "정숙",
+//       "은숙",
+//       "경숙"
+//     ] })
+//   }
+
+//   render(){
+//     const { friends } = this.state
+
+//     if(friends !== null){
+//       return (
+//         <>
+//           <div>{friends.join(' ')}</div>
+//           <button onClick={this.setFriends}>친구목록 갱신</button>
+//         </>
+//       ) 
+//       }else{
+//         return false
+//       }
+//   }
+// }
+
+// export default App;
+
+////////////////////////////////////
+
+// import './App.css';
+// import React, { Component } from 'react'
+
+// class App extends Component{
+//   constructor(props){
+//     super(props)
+//     this.state = {
+//       color: "red"
+//     }
+//     this.changeColor = this.changeColor.bind(this)
+
+//   }
+//   changeColor(){
+//     console.log(this)//콘솔로그로 this 값을 찍어보자//undifined 화살표 함수가 아니면 다음과 같이 끈다.
+//     this.setState({ color: "blue" })
+//   }//화살표 함수가 아닌 일반 함수로 만들어보자.
+
+//   render(){
+//     const { color } = this.state//color 값을 불러옴
+
+//     return (
+//       <>
+//         <div>{color}</div>
+//         <button onClick={this.changeColor}>색상 변경</button>
+//         {/* 색상변경 버튼 */}
+//       </>
+//     ) 
+//   }
+// }
+
+// export default App;
+/////////////////
+
+// import './App.css';
+// import React, { Component } from 'react'
+
+// class App extends Component{
+//   componentDidMount(){
+//     const photoBox = document.querySelector('.photo-box')
+//     photoBox.innerHTML = "포토 박스"
+//   }
+
+//   render(){
+//     return (
+//       <>
+//         <div className='photo-box'>
+//           컨텐츠 없음
+//         </div>
+//       </>
+//     ) 
+//   }
+// }
+
+// export default App;
+
+// ///////////////////////////////////////////////////
+// import './App.css';
+// import React, { Component } from 'react'
+
+// const colors = ["red", "blue", "green", "orange", "skyblue"]//색을 변경하기 위해 색 배열을 하나 만듦
+// //바뀌지 않는 값이기 때문에 외부에 작성한 상태
+// class App extends Component{
+//   state = {
+//     colorIndex: 0//색상 배열에서 색상을 조회하기 위한 현재 인덱스 값
+//   }
+//   changeColor = () => {
+//     this.setState({colorIndex: this.state.colorIndex + 1})//컬러인덱스 값만 올라간다.
+//   }
+//   componentDidMount(){
+//     this.timerId = setInterval(this.changeColor, 100)//타이머를 설정해 주기위한 구간
+//     //1초마다 컬러의 값을 바꿔줄 것// 구독
+//   }
+//   componentWillUnmount(){
+//     clearInterval(this.timerId)//구독 해제
+//   }//타이머를 해제하기 위해. 이걸 설정하지 않으면 백그라운드에서 계속 실행됨 
+
+//   render(){
+//     const { colorIndex } = this.state//색상값을 조회하기 위한 RENDER 
+//     const color = colors[colorIndex % colors.length]//colorindex를 1씩 증가시킬거기 때문에 
+
+//     return (
+//       <div className={`color-box ${color}`}>
+//         {/* 각각의 컬러를 스타일링 해주기 위해 다음과 같이 입력 */}
+//         {color}
+//       </div>
+//     ) 
+//   }
+// }
+
+// export default App;
+///////////////////////////////////////////////////////////////////////////////////////
+// import './App.css';
+// import React, { Component } from 'react'
+
+// class App extends Component{
+//   state = {
+//     cnt: 0
+//   }
+//   increase = () => {
+//     this.setState({ cnt: this.state.cnt + 1})
+//   }
+//   componentDidUpdate(prevProps, prevState){
+//     console.log('카운트 업데이트 !')
+//     console.log('직전 카운트 값: ', prevState)
+//     this.increase() // 재귀적으로 계속 실행됨
+//   }
+
+//   render(){
+//     const { cnt } = this.state
+
+//     return (
+//       <div className='center'>
+//         <div>{cnt}</div>
+//         <button onClick={this.increase}>카운트 증가</button>
+//       </div>
+//     )
+//   }
+// }
+
+// export default App;
+/////////////////////////////////
+// import './App.css';
+// import React, { Component } from 'react'
+
+// const fruits = ["apple", "banana", "orange"]
+
+// class App extends Component{
+//   state = {
+//     fruit: fruits[0]
+//   }
+//   changeFruitOrNot = () => {
+//     this.setState({ fruit: fruits[Math.floor(Math.random()*fruits.length)]})//랜덤으로 인덱스를 부여하기 위해
+//   }
+//   componentDidUpdate(prevProps, prevState){
+//     if(this.state.fruit !== prevState.fruit){
+//       console.log('과일 변경됨 !')
+//       console.log('직전에 선택된 과일: ', prevState.fruit)
+//     }else{
+//       alert("현재 선택된 과일은 이전과 동일함")
+//     }
+//   }
+
+//   render(){
+//     const { fruit } = this.state
+
+//     return (
+//       <div className='center'>
+//         <div>{fruit}</div>
+//         <button onClick={this.changeFruitOrNot}>과일 변경하기</button>
+//       </div>
+//     )
+//   }
+// }
+
+// export default App;
+/////
+import React, { Component } from 'react';
+import Counter from './Counter'
+
+class App extends Component {
+  state = {
+    toggle: true 
+  }
+  changeToggle = () => {
+    this.setState({ toggle: !this.state.toggle })
+  }
+  render() {
+    const { toggle } = this.state 
+    return (
+      <div>
+        {toggle? <Counter/> : <h1>컨텐츠 없음</h1>}
+        <br/>
+        <button onClick={this.changeToggle}>컴포넌트 보이기/사라지게 하기</button>
+      </div>
+    );
+  }
+}
 
 export default App;
